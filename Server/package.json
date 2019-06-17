@@ -4,7 +4,8 @@
   "description": "A Third-Party Multi-player support for Touhou Project 12: Unidentified Fantastic Object",
   "main": "dist/",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,13 @@
   "bugs": {
     "url": "https://github.com/Alex4386/rensen-connect/issues"
   },
-  "homepage": "https://github.com/Alex4386/rensen-connect#readme"
+  "homepage": "https://github.com/Alex4386/rensen-connect#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "@types/node": "^12.0.8"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "typescript": "^3.5.2"
+  }
 }
