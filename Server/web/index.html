@@ -36,6 +36,7 @@
             document.getElementById('hololo').innerHTML = "";
             for (let i = 0; i < wa.length; i++) {
                 const d = wa[i];
+                console.log(d);
                 document.getElementById('hololo').innerHTML += "<tr><td>"+d.userId+"</td><td>"+d.userName+"</td><td>"+d.difficulty+"</td><td>"+d.score+"</td><td>"+d.lifes+"</td><td>"+d.power+"</td><td>"+d.bombs+"</td></tr>";
             }
         }
