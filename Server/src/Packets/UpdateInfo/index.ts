@@ -1,7 +1,7 @@
 import WebSocket from "ws";
 import { PacketTypes, sendPacket } from "..";
 import { UserGameInfo } from "../../Game";
-import { currentUsers, getUserIndexFromWebSocket, getSendSafeCurrentUsers } from "../../Users";
+import { currentUsers, getSendSafeCurrentUsers, getUserIndexFromWebSocket } from "../../Users";
 import { broadcastToListeners } from "../Listeners";
 
 export function updateUserGameInfo(conn: WebSocket, data: UserGameInfo) {
