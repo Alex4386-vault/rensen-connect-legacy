@@ -1,12 +1,14 @@
 import WebSocket from "ws";
 import { sendPacket, PacketTypes } from "..";
 import { truncate } from "fs";
+import { getSendSafeCurrentUsers } from "../../Users";
 
 export const currentListeners: WebSocket[] = [];
 
 export function registerListener(conn: WebSocket) {
     currentListeners.push(conn);
     registerListenerSuccess(conn);
+    broadcastToListeners(getSendSafeCurrentUsers());
 }
 
 export function unregisterListener(conn: WebSocket) {
