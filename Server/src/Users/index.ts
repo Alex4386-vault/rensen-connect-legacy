@@ -27,7 +27,8 @@ export function getNewUserId(): number {
 
 export function registerUser(conn: WebSocket, userName: string): number {
     if (userName === undefined || userName === null || userName === "") {
-         userName = "GUEST-" + randomDigitGenerator(4); 
+         userName = "GUEST-" + randomDigitGenerator(4);
+         console.log("Updated userName to", userName);
     }
     const userId = getNewUserId();
     currentUsers.push({
