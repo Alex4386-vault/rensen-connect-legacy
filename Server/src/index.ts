@@ -31,7 +31,7 @@ phpify(app);
 app.use(express.static(path.join(__dirname, "../web")));
 // app.disable("content-security-policy");
 
-app.ws("/", (wsd, req) => {
+app.ws("/ws", (wsd, req) => {
     wsd.on("connection", (user: WebSocket) => {
         user.on("message", (msg: string) => {
             const json: PacketInterface = JSON.parse(msg) as PacketInterface;
