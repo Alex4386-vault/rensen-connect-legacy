@@ -26,7 +26,9 @@ const wsd = new WebSocket.Server({
 });
 */
 
-phpify(app);
+phpify(app, {
+    redirection: false,
+});
 
 app.use(express.static(path.join(__dirname, "../web")));
 // app.disable("content-security-policy");
