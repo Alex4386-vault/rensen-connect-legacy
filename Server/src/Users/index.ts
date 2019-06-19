@@ -65,3 +65,7 @@ export function unregisterUser(conn: WebSocket) {
     }
     return 0;
 }
+
+export function getSendSafeCurrentUsers() {
+    return (([{userConnection, ...others}]) => ([{...others}]))(currentUsers);
+}

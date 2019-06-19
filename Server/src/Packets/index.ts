@@ -8,6 +8,7 @@ export interface PacketInterface {
 export enum PacketTypes {
     HANDSHAKE = "handshake",
     UPDATEINFO = "updateInfo",
+    LISTENER = "listener",
 }
 
 export function sendPacket(conn: WebSocket, packet: PacketInterface) {

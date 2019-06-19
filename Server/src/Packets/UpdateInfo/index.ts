@@ -1,7 +1,7 @@
 import WebSocket from "ws";
 import { PacketTypes, sendPacket } from "..";
 import { UserGameInfo } from "../../Game";
-import { currentUsers, getUserIndexFromWebSocket } from "../../Users";
+import { currentUsers, getUserIndexFromWebSocket, getSendSafeCurrentUsers } from "../../Users";
 
 export function updateUserGameInfo(conn: WebSocket, data: UserGameInfo) {
     if (getUserIndexFromWebSocket(conn) !== -1) {
@@ -13,6 +13,9 @@ export function updateUserGameInfo(conn: WebSocket, data: UserGameInfo) {
 
         console.log("Score:", dope.score, "at Difficulty", dope.difficulty);
         console.log("Lifes:", dope.lifes, ", Power:", dope.power, ", Bombs:", dope.bombs);
+
+        // Testing Only
+        console.log(getSendSafeCurrentUsers());
 
         sendGameInfoUpdateSuccess(conn);
     }
