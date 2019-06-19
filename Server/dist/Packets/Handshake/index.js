@@ -7,7 +7,7 @@ function sendHandshakeSuccess(conn, userId) {
         type: __1.PacketTypes.HANDSHAKE,
         data: {
             success: true,
-            userId: userId
+            userId: userId,
         },
     });
 }

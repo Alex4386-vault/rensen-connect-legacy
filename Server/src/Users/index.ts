@@ -1,16 +1,20 @@
 import WebSocket from "ws";
 import { randomDigitGenerator } from "../Common";
+import { GameDifficulty, UserGameInfo } from "../Game";
 
-export const currentUsers:Array<UserDataFormat> = [];
+export const currentUsers: UserDataFormat[] = [];
 
 interface UserDataFormat {
-    userId: number,
-    userName: string,
-    userConnection: WebSocket
+    userId: number;
+    userName: string;
+    userConnection: WebSocket;
+    gameInfo: UserGameInfo;
 }
 
-export function getNewUserId():number {
+export function getNewUserId(): number {
     let i = 1;
+
+    // tslint:disable-next-line: prefer-for-of
     for (let j = 0; j < currentUsers.length; j++) {
         if (currentUsers[j].userId === i) {
             i++;
@@ -21,19 +25,26 @@ export function getNewUserId():number {
     return i;
 }
 
-export function registerUser(conn: WebSocket, userName: string):number {
-    if (userName === undefined || userName === null) { userName = "GUEST-"+randomDigitGenerator(4); }
+export function registerUser(conn: WebSocket, userName: string): number {
+    if (userName === undefined || userName === null) { userName = "GUEST-" + randomDigitGenerator(4); }
     const userId = getNewUserId();
     currentUsers.push({
         userId,
         userName,
-        userConnection: conn
+        userConnection: conn,
+        gameInfo: {
+            score: 0,
+            life: 0,
+            power: 0,
+            bomb: 0,
+            difficulty: GameDifficulty.EASY,
+        },
     });
     return userId;
 }
 
-export function getUserIdFromWebSocket(conn: WebSocket): number {
-    let index = 0;
+export function getUserIndexFromWebSocket(conn: WebSocket): number {
+    const index = 0;
     for (let i = 0; i < currentUsers.length; i++) {
         if (currentUsers[i].userConnection === conn) {
             return i;
@@ -43,7 +54,7 @@ export function getUserIdFromWebSocket(conn: WebSocket): number {
 }
 
 export function unregisterUser(conn: WebSocket) {
-    const index = getUserIdFromWebSocket(conn);
+    const index = getUserIndexFromWebSocket(conn);
     if (index === -1) {
         return -1;
     } else {
