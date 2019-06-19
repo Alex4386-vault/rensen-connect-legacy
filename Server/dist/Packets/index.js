@@ -4,6 +4,7 @@ var PacketTypes;
 (function (PacketTypes) {
     PacketTypes["HANDSHAKE"] = "handshake";
     PacketTypes["UPDATEINFO"] = "updateInfo";
+    PacketTypes["LISTENER"] = "listener";
 })(PacketTypes = exports.PacketTypes || (exports.PacketTypes = {}));
 function sendPacket(conn, packet) {
     conn.send(JSON.stringify(packet));
