@@ -16,7 +16,7 @@
         <TextBox x:Name="userNameField" HorizontalAlignment="Left" Height="23" Margin="76,237,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
         <Button x:Name="connectMe" Content="Connect" HorizontalAlignment="Left" Margin="230,237,0,0" VerticalAlignment="Top" Width="53" Height="51" Click="ConnectMe_Click"/>
         <Label x:Name="userNameExplain" Content="userName:" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="addressField" HorizontalAlignment="Left" Height="23" Margin="76,265,0,0" Text="wss://rensenconnect.alex4386.us" VerticalAlignment="Top" Width="149" AllowDrop="True"/>
+        <TextBox x:Name="addressField" HorizontalAlignment="Left" Height="23" Margin="76,265,0,0" Text="wss://rensenconnect.alex4386.us/ws" VerticalAlignment="Top" Width="149" AllowDrop="True"/>
         <Label x:Name="addressLabel" Content="Address:" HorizontalAlignment="Left" Margin="10,261,0,0" VerticalAlignment="Top" Width="61"/>
 
 

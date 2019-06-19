@@ -34,8 +34,6 @@ namespace rensenConnect
         public Thread discordUpdater;
 
         public bool isConnected = false;
-        public string url = "wss://rensenconnect.alex4386.us";
-        public string userName = "";
 
         public int prevScore = 0;
         public int prevLifes = 0;
@@ -148,7 +146,7 @@ namespace rensenConnect
                 connectMe.Content = (System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ko") ? "연결해제" : "Disconnect";
             } else
             {
-                ws.Close();
+                ws.Dispose();
                 ws = null;
                 isConnected = false;
                 connectMe.Content = (System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ko") ? "연결" : "Connect";
