@@ -26,6 +26,7 @@ const wsd = new WebSocket.Server({
 */
 
 app.use(express.static(path.join(__dirname, "../web")));
+app.disable("content-security-policy");
 
 app.ws("/", (wsd, req) => {
     wsd.on("connection", (user: WebSocket) => {
