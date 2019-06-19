@@ -1,0 +1,24 @@
+﻿<Window x:Class="rensenConnect.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rensenRichPresence"
+        mc:Ignorable="d"
+        Closing="MainWindow_Closing"
+        Title="RensenConnect" Height="372.668" Width="310" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,-1">
+        <TextBlock x:Name="explainLabel" HorizontalAlignment="Left" Height="51" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280"><Run Text="This software will connect to Rensen-Connect Server"/><LineBreak/><Run Text="and send your game status to server to provide"/><LineBreak/><Run Text="Multi-player "/><Run Text="TH12"/><Run Text=" experience"/></TextBlock>
+        <Label x:Name="rensenDetected" Content="Program is Loading..." HorizontalAlignment="Left" Height="29" Margin="10,78,0,0" VerticalAlignment="Top" Width="280"/>
+        <Label x:Name="scoreLabel" Content="GameInfo" HorizontalAlignment="Left" Height="63" Margin="10,137,0,0" VerticalAlignment="Top" Width="280"/>
+        <ProgressBar x:Name="rensenMeter" HorizontalAlignment="Left" Height="20" Margin="10,112,0,0" VerticalAlignment="Top" Width="273"/>
+        <ProgressBar x:Name="discordMeter" HorizontalAlignment="Left" Height="19" Margin="10,205,0,0" VerticalAlignment="Top" Width="273"/>
+        <TextBox x:Name="userNameField" HorizontalAlignment="Left" Height="23" Margin="76,237,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="149"/>
+        <Button x:Name="connectMe" Content="Connect" HorizontalAlignment="Left" Margin="230,237,0,0" VerticalAlignment="Top" Width="53" Height="51" Click="ConnectMe_Click"/>
+        <Label x:Name="userNameExplain" Content="userName:" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="addressField" HorizontalAlignment="Left" Height="23" Margin="76,265,0,0" Text="wss://rensenconnect.alex4386.us" VerticalAlignment="Top" Width="149" AllowDrop="True"/>
+        <Label x:Name="addressLabel" Content="Address:" HorizontalAlignment="Left" Margin="10,261,0,0" VerticalAlignment="Top" Width="61"/>
+
+
+    </Grid>
+</Window>
