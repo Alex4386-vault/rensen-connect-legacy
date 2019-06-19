@@ -33,30 +33,28 @@ phpify(app, {
 app.use(express.static(path.join(__dirname, "../web")));
 // app.disable("content-security-policy");
 
-app.ws("/ws", (wsd, req) => {
-    wsd.on("connection", (user: WebSocket) => {
-        user.on("message", (msg: string) => {
-            const json: PacketInterface = JSON.parse(msg) as PacketInterface;
-            switch (json.type) {
-                case PacketTypes.HANDSHAKE:
-                    handleHandshake(user, json.data);
-                    break;
-                case PacketTypes.UPDATEINFO:
-                    updateUserGameInfo(user, json.data);
-                    break;
-                case PacketTypes.LISTENER:
-                    registerListener(user);
-                default:
-            }
-        });
+app.ws("/ws", (user, req) => {
+    user.on("message", (msg: string) => {
+        const json: PacketInterface = JSON.parse(msg) as PacketInterface;
+        switch (json.type) {
+            case PacketTypes.HANDSHAKE:
+                handleHandshake(user, json.data);
+                break;
+            case PacketTypes.UPDATEINFO:
+                updateUserGameInfo(user, json.data);
+                break;
+            case PacketTypes.LISTENER:
+                registerListener(user);
+            default:
+        }
+    });
 
-        user.on("close", () => {
-            if (getUserIndexFromWebSocket(user) !== -1) {
-                console.log("Unregistering userId:", currentUsers[getUserIndexFromWebSocket(user)].userId);
-                unregisterUser(user);
-            }
-            unregisterListener(user);
-        });
+    user.on("close", () => {
+        if (getUserIndexFromWebSocket(user) !== -1) {
+            console.log("Unregistering userId:", currentUsers[getUserIndexFromWebSocket(user)].userId);
+            unregisterUser(user);
+        }
+        unregisterListener(user);
     });
 });
 
