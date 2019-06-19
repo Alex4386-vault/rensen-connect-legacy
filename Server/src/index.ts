@@ -1,9 +1,9 @@
 import express from "express";
+import { phpify } from "express-phpify";
 import expressWs from "express-ws";
 import fs from "fs";
 import path from "path";
 import WebSocket from "ws";
-import { phpify } from "express-phpify";
 import { PacketInterface, PacketTypes } from "./Packets";
 import { handleHandshake, sendHandshakeSuccess } from "./Packets/Handshake";
 import { registerListener, unregisterListener } from "./Packets/Listeners";
