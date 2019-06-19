@@ -4,6 +4,7 @@ import { PacketInterface, PacketTypes } from "./Packets";
 import { handleHandshake, sendHandshakeSuccess } from "./Packets/Handshake";
 import { updateUserGameInfo } from "./Packets/UpdateInfo";
 import { currentUsers, getUserIndexFromWebSocket, unregisterUser } from "./Users";
+import { registerListener, unregisterListener } from "./Packets/Listeners";
 
 console.log("RENSEN-CONNECT");
 console.log("Copyright (c) Alex4386 and Rensen-Connect Contributors");
@@ -28,6 +29,8 @@ wsd.on("connection", (user: WebSocket) => {
             case PacketTypes.UPDATEINFO:
                 updateUserGameInfo(user, json.data);
                 break;
+            case PacketTypes.LISTENER:
+                registerListener(user);
             default:
         }
     });
@@ -37,5 +40,6 @@ wsd.on("connection", (user: WebSocket) => {
             console.log("Unregistering userId:", currentUsers[getUserIndexFromWebSocket(user)].userId);
             unregisterUser(user);
         }
+        unregisterListener(user);
     });
 });
