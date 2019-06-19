@@ -16,8 +16,8 @@ exports.config = JSON.parse(fs_1.default.readFileSync("./config/config.json", "u
 var wsd = new ws_1.default.Server({
     port: exports.config.ports.websocket
 });
-console.log();
 console.log("Opened Server at localhost:" + exports.config.ports.websocket);
+console.log();
 wsd.on("connection", function (user) {
     user.on("message", function (msg) {
         var json = JSON.parse(msg);

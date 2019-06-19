@@ -13,7 +13,9 @@ function sendHandshakeSuccess(conn, userId) {
 }
 exports.sendHandshakeSuccess = sendHandshakeSuccess;
 function handleHandshake(conn, data) {
+    console.log("Handshake Request! userName:", data.userName);
     var userId = Users_1.registerUser(conn, data.userName);
+    console.log("Handshake Success! userId:", userId);
     sendHandshakeSuccess(conn, userId);
 }
 exports.handleHandshake = handleHandshake;

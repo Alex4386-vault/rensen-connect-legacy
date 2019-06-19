@@ -7,6 +7,7 @@ interface HandshakePacket {
 }
 
 export function sendHandshakeSuccess(conn: WebSocket, userId: number) {
+    
     sendPacket(conn, {
         type: PacketTypes.HANDSHAKE,
         data: {
@@ -17,6 +18,8 @@ export function sendHandshakeSuccess(conn: WebSocket, userId: number) {
 }
 
 export function handleHandshake(conn: WebSocket, data: HandshakePacket) {
+    console.log("Handshake Request! userName:",data.userName);
     const userId = registerUser(conn, data.userName);
+    console.log("Handshake Success! userId:",userId)
     sendHandshakeSuccess(conn, userId);
 }

@@ -13,8 +13,8 @@ export const config = JSON.parse(fs.readFileSync("./config/config.json", "utf-8"
 const wsd = new WebSocket.Server({
     port: config.ports.websocket
 });
-console.log();
 console.log("Opened Server at localhost:"+config.ports.websocket);
+console.log();
 
 wsd.on("connection", (user: WebSocket) => {
     user.on("message", (msg: string) => {
