@@ -34,9 +34,9 @@ export function registerUser(conn: WebSocket, userName: string): number {
         userConnection: conn,
         gameInfo: {
             score: 0,
-            life: 0,
+            lifes: 0,
             power: 0,
-            bomb: 0,
+            bombs: 0,
             difficulty: GameDifficulty.EASY,
         },
     });

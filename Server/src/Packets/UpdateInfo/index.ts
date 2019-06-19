@@ -12,7 +12,7 @@ export function updateUserGameInfo(conn: WebSocket, data: UserGameInfo) {
         const dope = currentUsers[getUserIndexFromWebSocket(conn)].gameInfo;
 
         console.log("Score:", dope.score, "at Difficulty", dope.difficulty);
-        console.log("Lifes:", dope.life, ", Power:", dope.power, ", Bombs:", dope.bomb);
+        console.log("Lifes:", dope.lifes, ", Power:", dope.power, ", Bombs:", dope.bombs);
 
         sendGameInfoUpdateSuccess(conn);
     }

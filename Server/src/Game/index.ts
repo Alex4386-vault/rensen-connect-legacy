@@ -1,8 +1,8 @@
 export interface UserGameInfo {
     score: number;
-    life: number;
+    lifes: number;
     power: number;
-    bomb: number;
+    bombs: number;
     difficulty: GameDifficulty;
 }
 

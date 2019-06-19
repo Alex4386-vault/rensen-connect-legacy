@@ -8,7 +8,7 @@ function updateUserGameInfo(conn, data) {
         Object.assign(Users_1.currentUsers[Users_1.getUserIndexFromWebSocket(conn)].gameInfo, data);
         var dope = Users_1.currentUsers[Users_1.getUserIndexFromWebSocket(conn)].gameInfo;
         console.log("Score:", dope.score, "at Difficulty", dope.difficulty);
-        console.log("Lifes:", dope.life, ", Power:", dope.power, ", Bombs:", dope.bomb);
+        console.log("Lifes:", dope.lifes, ", Power:", dope.power, ", Bombs:", dope.bombs);
         sendGameInfoUpdateSuccess(conn);
     }
 }
