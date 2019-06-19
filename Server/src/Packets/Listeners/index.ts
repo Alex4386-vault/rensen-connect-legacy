@@ -1,10 +1,12 @@
 import WebSocket from "ws";
 import { sendPacket, PacketTypes } from "..";
+import { truncate } from "fs";
 
 export const currentListeners: WebSocket[] = [];
 
 export function registerListener(conn: WebSocket) {
     currentListeners.push(conn);
+    registerListenerSuccess(conn);
 }
 
 export function unregisterListener(conn: WebSocket) {
@@ -14,6 +16,15 @@ export function unregisterListener(conn: WebSocket) {
             currentListeners.splice(i, 1);
         }
     }
+}
+
+export function registerListenerSuccess(conn: WebSocket) {
+    sendPacket(conn, {
+        type: PacketTypes.LISTENER,
+        data: {
+            success: true,
+        },
+    });
 }
 
 export function broadcastToListeners(data: any) {
