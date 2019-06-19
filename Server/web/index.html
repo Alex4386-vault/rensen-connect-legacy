@@ -29,6 +29,16 @@
 <script>
     var x = new WebSocket("wss://"+location.hostname+"/ws");
     x.send(JSON.stringify({type:"listener"}));
-    x.onmessage = (msg)
+    x.onmessage = (msg) => {
+        const data = JSON.parse(msg.data);
+        if (data.type === "listener" && !data.success) {
+            const wa = data.data;
+            document.getElementById('hololo').innerHTML = "";
+            for (let i = 0; i < wa.length; i++) {
+                const d = wa[i];
+                document.getElementById('hololo').innerHTML += "<tr><td>"+d.userId+"</td><td>"+d.userName+"</td><td>"+d.difficulty+"</td><td>"+d.score+"</td><td>"+d.lifes+"</td><td>"+d.power+"</td><td>"+d.bombs+"</td></tr>";
+            }
+        }
+    }
 </script>
 </html>
