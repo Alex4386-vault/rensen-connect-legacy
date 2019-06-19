@@ -4,7 +4,12 @@ var __1 = require("..");
 var Users_1 = require("../../Users");
 function updateUserGameInfo(conn, data) {
     if (Users_1.getUserIndexFromWebSocket(conn) !== -1) {
-        Users_1.currentUsers[Users_1.getUserIndexFromWebSocket(conn)].gameInfo = data;
+        console.log("Updating userId", Users_1.currentUsers[Users_1.getUserIndexFromWebSocket(conn)].userId + ":");
+        Object.assign(Users_1.currentUsers[Users_1.getUserIndexFromWebSocket(conn)].gameInfo, data);
+        var dope = Users_1.currentUsers[Users_1.getUserIndexFromWebSocket(conn)].gameInfo;
+        console.log("Score:", dope.score, "at Difficulty", dope.difficulty);
+        console.log("Lifes:", dope.life, ", Power:", dope.power, ", Bombs:", dope.bomb);
+        sendGameInfoUpdateSuccess(conn);
     }
 }
 exports.updateUserGameInfo = updateUserGameInfo;
