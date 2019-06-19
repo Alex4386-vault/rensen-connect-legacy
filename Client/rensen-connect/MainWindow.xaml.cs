@@ -148,6 +148,8 @@ namespace rensenConnect
                 connectMe.Content = (System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ko") ? "연결해제" : "Disconnect";
             } else
             {
+                ws.Close();
+                ws = null;
                 isConnected = false;
                 connectMe.Content = (System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ko") ? "연결" : "Connect";
             }
