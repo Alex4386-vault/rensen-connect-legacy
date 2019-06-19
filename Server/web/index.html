@@ -37,7 +37,7 @@
             for (let i = 0; i < wa.length; i++) {
                 const d = wa[i];
                 console.log(d);
-                document.getElementById('hololo').innerHTML += "<tr><td>"+d.userId+"</td><td>"+d.userName+"</td><td>"+d.difficulty+"</td><td>"+d.score+"</td><td>"+d.lifes+"</td><td>"+d.power+"</td><td>"+d.bombs+"</td></tr>";
+                document.getElementById('hololo').innerHTML += "<tr><td>"+d.userId+"</td><td>"+d.userName+"</td><td>"+d.gameInfo.difficulty+"</td><td>"+d.gameInfo.score+"</td><td>"+d.gameInfo.lifes+"</td><td>"+d.gameInfo.power+"</td><td>"+d.gameInfo.bombs+"</td></tr>";
             }
         }
     }
