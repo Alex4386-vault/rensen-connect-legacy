@@ -1,5 +1,6 @@
 import WebSocket from "ws";
 import { PacketTypes, sendPacket } from "..";
+import { ranks } from "../../";
 import { getSendSafeCurrentUsers } from "../../Users";
 
 export const currentListeners: WebSocket[] = [];
@@ -7,7 +8,7 @@ export const currentListeners: WebSocket[] = [];
 export function registerListener(conn: WebSocket) {
     currentListeners.push(conn);
     registerListenerSuccess(conn);
-    broadcastToListeners(getSendSafeCurrentUsers());
+    broadcastToListeners({ current: getSendSafeCurrentUsers(), ranks });
 }
 
 export function unregisterListener(conn: WebSocket) {
