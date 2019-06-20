@@ -40,7 +40,7 @@ namespace rensenConnect
         public int prevBombs = 0;
         public float prevPower = 0;
         public RensenNegotiation.Difficulty prevDifficulty = RensenNegotiation.Difficulty.EASY;
-        public WebSocket ws;
+        public WebSocket ws = null;
 
 
         public MainWindow()
@@ -135,7 +135,7 @@ namespace rensenConnect
 
         private void ConnectMe_Click(object sender, RoutedEventArgs e)
         {
-            if (!isConnected)
+            if (!isConnected && ws == null)
             {
                 ws = new WebSocket(addressField.Text);
                 ws.Connect();
@@ -144,8 +144,11 @@ namespace rensenConnect
 
                 isConnected = true;
                 connectMe.Content = (System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ko") ? "연결해제" : "Disconnect";
-            } else
+            } else if (ws != null)
             {
+                ws.Close();
+                ws.Dispose();
+            } else {
                 ws.Close();
                 ws.Dispose();
                 ws = null;
