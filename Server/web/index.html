@@ -31,7 +31,6 @@
     <h2>Ranking</h2>
     <table class="table">
         <thead>
-            <td>userId</td>
             <td>userName</td>
             <td>Difficulty</td>
             <td>Score</td>
@@ -65,7 +64,7 @@
             for (let i = 0; i < rank.length; i++) {
                 const d = rank[i];
                 console.log(d);
-                document.getElementById('lohoho').innerHTML += "<tr><td>"+d.userId+"</td><td>"+d.userName+"</td><td>"+d.gameInfo.difficulty+"</td><td>"+d.gameInfo.score+"</td><td>"+d.gameInfo.lifes+"</td><td>"+d.gameInfo.power+"</td><td>"+d.gameInfo.bombs+"</td></tr>";
+                document.getElementById('lohoho').innerHTML += "<tr><td>"+d.userName+"</td><td>"+d.gameInfo.difficulty+"</td><td>"+d.gameInfo.score+"</td><td>"+d.gameInfo.lifes+"</td><td>"+d.gameInfo.power+"</td><td>"+d.gameInfo.bombs+"</td></tr>";
             }
 
         }
