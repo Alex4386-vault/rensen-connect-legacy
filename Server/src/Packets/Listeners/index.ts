@@ -1,6 +1,5 @@
 import WebSocket from "ws";
 import { sendPacket, PacketTypes } from "..";
-import { truncate } from "fs";
 import { getSendSafeCurrentUsers } from "../../Users";
 
 export const currentListeners: WebSocket[] = [];
@@ -16,6 +15,7 @@ export function unregisterListener(conn: WebSocket) {
     for (let i = 0; i < currentListeners.length; i++) {
         if (currentListeners[i] === conn) {
             currentListeners.splice(i, 1);
+            break;
         }
     }
 }

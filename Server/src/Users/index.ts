@@ -62,8 +62,8 @@ export function unregisterUser(conn: WebSocket) {
         return -1;
     } else {
         currentUsers.splice(index, 1);
+        return 0;
     }
-    return 0;
 }
 
 export function getSendSafeCurrentUsers() {

@@ -53,8 +53,9 @@ app.ws("/ws", (user, req) => {
         if (getUserIndexFromWebSocket(user) !== -1) {
             console.log("Unregistering userId:", currentUsers[getUserIndexFromWebSocket(user)].userId);
             unregisterUser(user);
+        } else {
+            unregisterListener(user);
         }
-        unregisterListener(user);
     });
 });
 
