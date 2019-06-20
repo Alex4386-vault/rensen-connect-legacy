@@ -146,10 +146,20 @@ namespace rensenConnect
                 connectMe.Content = (System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ko") ? "연결해제" : "Disconnect";
             } else
             {
+                ws.Close();
                 ws.Dispose();
                 ws = null;
                 isConnected = false;
                 connectMe.Content = (System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ko") ? "연결" : "Connect";
+            }
+        }
+
+        private void RegisterRank_Click(object sender, RoutedEventArgs e)
+        {
+            if (isConnected)
+            {
+                var registerMe = new { type = "registerRank" };
+                ws.Send(JsonConvert.SerializeObject(registerMe));
             }
         }
     }

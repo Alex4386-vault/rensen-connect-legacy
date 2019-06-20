@@ -15,7 +15,7 @@ namespace rensenConnect
         }
         public static class Variables
         {
-            public static int uRFucked = -2147483648;
+            public static int uRFucked = -9;
             public static int errorReadFail = -100;
         }
     }
