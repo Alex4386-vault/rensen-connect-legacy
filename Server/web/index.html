@@ -9,6 +9,9 @@
 </head>
 <body>
     <h1>RensenConnect Public Alpha Test</h1>
+    <p>TODO: 랭킹 시스템 구현, 자잘한 버그 수정</p>
+    <p>GitHub: <a href="https://github.com/Alex4386/rensen-connect">GitHub</a> Distributed under Hakurei Reimu Public License and MIT License</p>
+
 
     <table class="table">
         <thead>
@@ -34,6 +37,7 @@
         if (data.type === "listener" && !data.success) {
             const wa = data.data;
             document.getElementById('hololo').innerHTML = "";
+            wa.sort((a,b) => a.gameInfo.score - b.gameInfo.score);
             for (let i = 0; i < wa.length; i++) {
                 const d = wa[i];
                 console.log(d);
