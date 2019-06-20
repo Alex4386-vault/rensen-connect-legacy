@@ -1,3 +1,4 @@
+import fs from "fs";
 import WebSocket from "ws";
 import { ranks } from "../..";
 import { UserGameInfo } from "../../Game";
@@ -24,5 +25,8 @@ export function registerRank(conn: WebSocket) {
             },
         });
         broadcastToListeners({ current: getSendSafeCurrentUsers(), ranks });
+        fs.writeFileSync("./config/ranks.json", JSON.stringify(ranks), {
+            encoding: "utf8",
+        });
     }
 }
