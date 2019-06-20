@@ -67,5 +67,16 @@ export function unregisterUser(conn: WebSocket) {
 }
 
 export function getSendSafeCurrentUsers() {
-    return (([{userConnection, ...others}]) => ([{...others}]))(currentUsers);
+    const a = [];
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < currentUsers.length; i++) {
+        a.push(
+            {
+                userId: currentUsers[i].userId,
+                userName: currentUsers[i].userName,
+                gameInfo: currentUsers[i].gameInfo,
+            },
+        );
+    }
+    return a;
 }
