@@ -9,6 +9,7 @@ export enum PacketTypes {
     HANDSHAKE = "handshake",
     UPDATEINFO = "updateInfo",
     LISTENER = "listener",
+    REGISTERRANK = "registerRank",
 }
 
 export function sendPacket(conn: WebSocket, packet: PacketInterface) {

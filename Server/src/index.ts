@@ -6,9 +6,10 @@ import path from "path";
 import WebSocket from "ws";
 import { PacketInterface, PacketTypes } from "./Packets";
 import { handleHandshake, sendHandshakeSuccess } from "./Packets/Handshake";
-import { registerListener, unregisterListener } from "./Packets/Listeners";
-import { updateUserGameInfo } from "./Packets/UpdateInfo";
-import { currentUsers, getUserIndexFromWebSocket, unregisterUser } from "./Users";
+import { broadcastToListeners, registerListener, unregisterListener } from "./Packets/Listeners";
+import { RankFormat, registerRank } from "./Packets/RegisterRank";
+import { sendGameInfoUpdateSuccess, updateUserGameInfo } from "./Packets/UpdateInfo";
+import { currentUsers, getSendSafeCurrentUsers, getUserIndexFromWebSocket, unregisterUser } from "./Users";
 
 console.log("RENSEN-CONNECT");
 console.log("Copyright (c) Alex4386 and Rensen-Connect Contributors");
@@ -16,6 +17,7 @@ console.log("This software is distributed under HRPL and MIT");
 console.log();
 console.log("Loading Configuration...");
 export const config = JSON.parse(fs.readFileSync("./config/config.json", "utf-8"));
+export const ranks: RankFormat[] = JSON.parse(fs.readFileSync("./config/ranks.json", "utf-8"));
 
 const appWs = expressWs(express());
 const app = appWs.app;
@@ -45,6 +47,10 @@ app.ws("/ws", (user, req) => {
                 break;
             case PacketTypes.LISTENER:
                 registerListener(user);
+                break;
+            case PacketTypes.REGISTERRANK:
+                registerRank(user);
+                break;
             default:
         }
     });
@@ -56,6 +62,7 @@ app.ws("/ws", (user, req) => {
         } else {
             unregisterListener(user);
         }
+        broadcastToListeners({ current: getSendSafeCurrentUsers(), ranks });
     });
 });
 
