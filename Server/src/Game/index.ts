@@ -11,4 +11,5 @@ export enum GameDifficulty {
     NORMAL = "normal",
     HARD = "hard",
     LUNATIC = "lunatic",
+    EXTRA = "extra"
 }
