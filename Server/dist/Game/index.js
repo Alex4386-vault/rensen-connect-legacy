@@ -6,4 +6,5 @@ var GameDifficulty;
     GameDifficulty["NORMAL"] = "normal";
     GameDifficulty["HARD"] = "hard";
     GameDifficulty["LUNATIC"] = "lunatic";
+    GameDifficulty["EXTRA"] = "extra";
 })(GameDifficulty = exports.GameDifficulty || (exports.GameDifficulty = {}));
