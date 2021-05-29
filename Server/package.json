@@ -34,6 +34,6 @@
     "express-phpify": "^1.2.3",
     "express-ws": "^4.0.0",
     "typescript": "^3.5.2",
-    "ws": "^7.0.0"
+    "ws": "^7.4.6"
   }
 }
